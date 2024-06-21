@@ -93,7 +93,8 @@ function postNote(title, body, date){
 		},
         body: JSON.stringify({
             Title: title,
-            Body: body
+            Body: body,
+            Date: date
         })
     })
     .then(function(response){
