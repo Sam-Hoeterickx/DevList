@@ -46,29 +46,8 @@ function createAccount(){
         createNoteForUser(data.id);
     })
     .then(function(){
-        // window.location.replace("http://127.0.0.1:5500/index.html");
+        window.location.replace("http://127.0.0.1:5500/index.html");
     })
-}
-
-function createNoteForUser(userId) {
-    const noteData = {
-        title: "Welcome Note",
-        content: "This is your first note!",
-        userId: userId
-    };
-    fetch('https://chat-test.pockethost.io/api/collections/notes/records', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(noteData)
-    })
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
-        console.log('Note created:', data);
-    });
 }
 
 init();
