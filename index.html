@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevList</title>
+    <title>// DevList</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <div class="container">
+        
         <header>
-            <h1>DevList</h1>
+            <h1>// DEVLIST</h1>
         </header>
-
-        <section class="notes-list">
-            <div class="note">
-                <div class="title">
-                    <h2>Title</h2>
-                    <span>Data</span>
-                </div>
-                <p>Body</p>
+        <section class="logIn-wrapper">
+            <h3>Log In</h3>
+        
+            <div class="inputItem logInputs">
+                <span>UserName</span>
+                <input type="text" name="logIn" id="logIn-userName" class="inputField" placeholder="username">
             </div>
+            <div class="inputItem logInputs">
+                <span>Password</span>
+                <input type="password" name="logIn" id="logIn-password" class="inputField" placeholder="password">
+            </div>
+            <input type="button" value="Log In" id="logInBtn">
+            <a id="signUp-btn" href="signUp.html">Create new Account</a>
         </section>
-        <div class="addNote">
-            <input type="button" id="addNote-btn" value="+">
-        </div>
     </div>
-
-    <script type="module" src="js/index.js"></script>
+    <script type="module" src="js/logIn.js"></script>
 </body>
 </html>

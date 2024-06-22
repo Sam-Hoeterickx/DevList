@@ -1,9 +1,211 @@
 :root{
     --background-color: #2a2b2e;
+    --accent-color: #262629fd;
     --font-color: #f5f5f5;
+    --hover-color: #f5f5f5e6;
 }
 
 body{
     background-color: var(--background-color);
     color: var(--font-color);
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h3{
+    font-style: italic;
+    font-size: 24pt;
+    margin-bottom: 64px;
+}
+a{
+    color: var(--font-color);
+    text-decoration: none;
+    font-style: italic;
+}
+input[type=button]{
+    cursor: pointer;
+}
+a#btn{
+    padding: 10px 40px;
+    border-radius: 14px;
+    border: none;
+    background-color:var(--font-color);
+    color: var(--background-color);
+    font-size: 24pt;
+}
+
+.container{
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+header{
+    text-align: center;
+    font-size: 28pt;
+    font-style: italic;
+    font-weight: 600;
+}
+section.redirect{
+    padding-bottom: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.note{
+    width: 95%;
+    margin: 32px 0;
+    padding: 20px 30px;
+    box-shadow: 10px 10px 10px 7px var(--accent-color);
+    border-radius: 10px;
+}
+.addNote{
+    width: 100%;
+
+    position: sticky;
+    bottom: 0;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgb(42, 43, 46, .95);
+}
+
+#addNote-btn, #add-DevList-btn, #logInBtn, #signUpBtn{
+    margin: 20px 0 50px;
+    padding: 15px 50px;
+    border-radius: 15px;
+    border: none;
+    background-color: var(--font-color);
+    
+    font-size: 14pt;
+    color: var(--background-color);
+}
+#add-DevList-btn{
+    margin-bottom: 14px;
+}
+#addNote-btn:hover, 
+#add-DevList-btn:hover, 
+#logInBtn:hover,
+#signUpBtn:hover,
+#btn:hover{
+    animation-name: btn;
+    animation-duration: 5s;
+    animation-timing-function: ease;
+}
+#logIn:hover, #signUp-btn:hover{
+    animation-name: logIN;
+    animation-duration: 5s;
+    animation-timing-function: ease;
+}
+@keyframes btn{
+    0%{
+        background-color: var(--font-color);
+        scale: 1;
+    }
+    10%{
+        background-color: var(--hover-color);
+        scale: 1.1;
+    }
+    100%{
+        background-color: var(--hover-color);
+        scale: 1.03;
+    }
+}
+@keyframes logIN{
+    0%{
+        color: var(--font-color);
+        border-bottom: 0;
+    }
+    10%{
+        color: var(--hover-color);
+        border-bottom: 2pt solid var(--font-color);
+    }
+    100%{
+        color: var(--hover-color);
+        border-bottom: 2pt solid var(--font-color);
+    }
+}
+.addNote-pop-up{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 20px;
+}
+.inputItem{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 500px;
+    
+
+    
+    margin-bottom: 48px;
+}
+.inputItem span{
+    margin-bottom: 10px;
+    font-size: 14pt
+}
+
+.inputField{
+    border: 2pt solid var(--font-color);
+    border-radius: 14pt;
+    background-color: var(--background-color);
+    height: 35px;
+
+    color: var(--font-color);
+}
+.inputField:focus{
+    outline: none;
+}
+.inputItem textarea.inputField#body{
+    height: 300px;
+    padding: 15px 20px;
+    font-size: 12pt;
+}
+.inputItem input.inputField#title{
+    padding: 10px 20px;
+    font-size: 15pt;
+}
+
+.note .title{
+    display: flex;
+    justify-content: space-between;
+}
+.note .title span{
+    padding-right: 50px;
+    font-style: italic;
+}
+
+#options{
+    background-color: var(--background-color);
+    border: none;
+    color: var(--font-color);
+    font-size: 14pt;
+}
+
+span#more-info{
+    font-style: italic;
+    font-weight: 200;
+}
+
+
+.logIn-wrapper{
+    height: 75svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.logInputs input{
+    padding: 10px 20px;
+    font-size: 15pt;
+}
+.signUpInputs{
+    margin-bottom: 32px;
 }

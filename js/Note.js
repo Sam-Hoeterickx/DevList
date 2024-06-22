@@ -7,10 +7,13 @@ export default class Note{
     }
     get htmlString(){
         return `
-            <div class="note">
+            <div class="note ${this._id}">
                 <div class="title">
                     <h2>${this._title}</h2>
-                    <span id="date">${this._date}</span>
+                     <div class="info">
+                        <span id="date">${this._date}</span>
+                        <input type="button" value=":" id="options">
+                    </div>
                 </div>
                 <p>${this._body}</p>
             </div>
