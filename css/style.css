@@ -189,19 +189,11 @@ section.redirect{
     padding-right: 50px;
     font-style: italic;
 }
-
-#options{
-    background-color: var(--background-color);
-    border: none;
-    color: var(--font-color);
-    font-size: 14pt;
+.info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
-span#more-info{
-    font-style: italic;
-    font-weight: 200;
-}
-
 
 .logIn-wrapper{
     height: 75svh;
@@ -226,4 +218,15 @@ span#more-info{
 }
 .add-btn a{
     margin-bottom: 32px;
+}
+
+@media(max-width: 1200px){
+    .title{
+        flex-direction: column;
+    }
+    .info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
