@@ -221,6 +221,13 @@ section.redirect{
 }
 
 @media(max-width: 1200px){
+    .container{
+        width: 80%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
     header{
         text-align: center;
         font-size: 22pt;
@@ -232,7 +239,18 @@ section.redirect{
     }
     .info{
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    .note{
+        width: 80%;
+        margin: 32px 0;
+        padding: 20px 30px;
+        box-shadow: 10px 10px 10px 7px var(--accent-color);
+        border-radius: 10px;
+    }
+    .note .title span{
+        padding-right: 0px;
     }
 }
