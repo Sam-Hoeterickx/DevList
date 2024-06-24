@@ -76,9 +76,11 @@ section.redirect{
 
     background-color: rgb(42, 43, 46, .95);
 }
-
+#logIn, #signUp-btn{
+    border-bottom: 2pt solid transparent;
+}
 #addNote-btn, #add-DevList-btn, #logInBtn, #signUpBtn, .btn{
-    margin: 20px 0 50px;
+    margin: 20px 0 20px;
     padding: 15px 50px;
     border-radius: 15px;
     border: none;
@@ -126,7 +128,7 @@ section.redirect{
 @keyframes logIN{
     0%{
         color: var(--font-color);
-        border-bottom: 0;
+        border-bottom: 2pt solid transparent;
     }
     10%{
         color: var(--hover-color);
@@ -213,5 +215,15 @@ span#more-info{
     font-size: 15pt;
 }
 .signUpInputs{
+    margin-bottom: 32px;
+}
+
+.add-btn{
+    display:flex; 
+    flex-direction:column;
+    justify-self: center;
+    align-items: center;
+}
+.add-btn a{
     margin-bottom: 32px;
 }

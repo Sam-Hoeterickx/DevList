@@ -15,11 +15,9 @@ let noteIds;
 let myNotes = [];
 
 function init(){
-    console.log('DevList');
-    // console.log(document.cookie);   
-    // console.log(getUserId()) 
-    // const userId = getUserId();
+    console.log('//DevList');
     getLists();
+    
 }
 
 function getLists(){
@@ -48,10 +46,6 @@ function sortData(){
 }
 
 function filterNotes(){
-//     console.log(author)
-//     myNotes = allNotes.items.filter(function(note){
-//         return note.ListOf = author
-//     })
     myNotes = allNotes.items.filter(item => item.ListOf === author);
     console.log(myNotes)
 }
@@ -61,8 +55,6 @@ function renderAllNotes(){
     noteIds = [];
     const ctx = document.querySelector('.notes-list');
     let htmlString = '';
-
-    console.log('render');
     
     if(document.cookie == cookie){
         filterNotes(author);
@@ -76,13 +68,11 @@ function renderAllNotes(){
         ctx.innerHTML = htmlString;
         addEvent();
         addOptionEvent();
-    
     }
     else{
         alert('// Acces denied, you need to log in first')
-
     }
-   
+    logInRedirect();
 }
 
 function getDate(){
@@ -90,15 +80,13 @@ function getDate(){
     const currentDay = toDay.getDate();
     const currentMonth = toDay.getMonth() + 1;
     const currentYear = toDay.getFullYear();
-    // const currentDate = `${currentDay} - ${currentMonth} - ${currentYear}`;
     return `${currentDay} - ${currentMonth} - ${currentYear}`
 }
 
 function addEvent(){
     const btn = document.querySelectorAll('#addNote-btn');
     const ctx = document.querySelector('.addNote');
-    let btnPop = "Pop"
-    // let htmlString = ''
+
     btn.forEach(function(btn){
         btn.addEventListener('click', function(){
             let htmlString = `
@@ -116,9 +104,11 @@ function addEvent(){
                     <span id="more-info">// For a new line type < br ></span>
                     <div class="add-btn">
                         <input type="button" id="add-DevList-btn" class="btn" value="Add DevList">
+                        <a href="list.html" id="signUp-btn">close</a>
                     </div>
                 </div>
             `
+
             ctx.innerHTML = htmlString;
             readInputs();
         })
@@ -128,7 +118,6 @@ function addEvent(){
 function readInputs(){
     const btn = document.querySelector('#add-DevList-btn');
     const ctx = document.querySelector('.addNote');
-    
 
     btn.addEventListener('click', function(){
         
@@ -141,8 +130,8 @@ function readInputs(){
                 <input type="button" id="addNote-btn" value="+">
             </div>
         `
-        ctx.innerHTML = htmlString;
 
+        ctx.innerHTML = htmlString;
         postNote(titleInput, bodyInput, date, author);
     })
 }
@@ -172,7 +161,7 @@ function postNote(title, body, date, author){
 function addOptionEvent(){
     const updateBtn = document.querySelectorAll('#updateBtn');
     const deleteBtn = document.querySelectorAll('#deleteBtn');
-    console.log('btn')
+
     updateBtn.forEach(function(element,id){
         element.addEventListener('click', function(){
             const noteID = noteIds[id];
@@ -190,8 +179,8 @@ function addOptionEvent(){
 
 function addUpdateEvent(noteID){
     const ctx = document.querySelector('.addNote');
+
     let htmlString = `
-        
         <div class="addNote-pop-up">
             <h3>Update Note</h3>
             <div class="inputItem">
@@ -205,9 +194,11 @@ function addUpdateEvent(noteID){
             <span id="more-info">// For a new line type < br ></span>
             <div class="add-btn">
                 <input type="button" id="update-DevList-btn"  class="btn" value="Update DevList Note">
+                <a href="list.html" id="signUp-btn">close</a>
             </div>
         </div>
     `
+
     ctx.innerHTML = htmlString;
     readUpdateInputs(noteID);
 }
@@ -215,7 +206,6 @@ function addUpdateEvent(noteID){
 function readUpdateInputs(noteID){
     const btn = document.querySelector('#update-DevList-btn');
     const ctx = document.querySelector('.addNote');
-    
 
     btn.addEventListener('click', function(){
         titleInput = document.querySelector('#title').value;
@@ -263,6 +253,13 @@ function deleteNote(noteID){
     .then(function(){
         getLists();
     })
+}
+
+function logInRedirect(){
+    if(author === undefined){
+        // window.location.replace("http://127.0.0.1:5500/index.html");
+        window.location.replace("https://sam-hoeterickx.github.io/DevList/index.html");
+    }
 }
 
 init();
