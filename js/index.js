@@ -7,10 +7,11 @@ let allNotes;
 let titleInput;
 let bodyInput;
 let date;
-let username
+let username;
 let author
 
 let notes=[];
+let noteIds;
 let myNotes = [];
 
 function init(){
@@ -57,6 +58,7 @@ function filterNotes(){
 function renderAllNotes(){
     const cookie = getCookie();
     author = getUserId();
+    noteIds = [];
     const ctx = document.querySelector('.notes-list');
     let htmlString = '';
 
@@ -66,9 +68,11 @@ function renderAllNotes(){
         filterNotes(author);
         myNotes.forEach(function(note){
             let newNote = new Note(note.Title, note.Body, note.Date, note.id)
+            noteIds.push(note.id);
             htmlString += newNote.htmlString;
         })
     
+        console.log(noteIds)
         ctx.innerHTML = htmlString;
         addEvent();
         addOptionEvent();
@@ -111,7 +115,7 @@ function addEvent(){
                     </div>
                     <span id="more-info">// For a new line type < br ></span>
                     <div class="add-btn">
-                        <input type="button" id="add-DevList-btn" value="Add DevList">
+                        <input type="button" id="add-DevList-btn" class="btn" value="Add DevList">
                     </div>
                 </div>
             `
@@ -139,11 +143,11 @@ function readInputs(){
         `
         ctx.innerHTML = htmlString;
 
-        postNote(titleInput, bodyInput, date, username);
+        postNote(titleInput, bodyInput, date, author);
     })
 }
 
-function postNote(title, body, date, username){
+function postNote(title, body, date, author){
     fetch('https://chat-test.pockethost.io/api/collections/Notes/records', {
         method: "POST",
         headers: {
@@ -166,23 +170,98 @@ function postNote(title, body, date, username){
 }
 
 function addOptionEvent(){
-    const optionBtn = document.querySelectorAll('#options');
-    const ctx = document.querySelector('.info');
+    const updateBtn = document.querySelectorAll('#updateBtn');
+    const deleteBtn = document.querySelectorAll('#deleteBtn');
     console.log('btn')
-    optionBtn.forEach(function(element){
+    updateBtn.forEach(function(element,id){
         element.addEventListener('click', function(){
-            console.log('Option btn is active');
-
-            let htmlString = `
-                <span id="date">${this._date}</span>
-                <input type="button" value=":" id="options">
-
-                <p>PopUp</p>
-            `
-            // ctx.forEach(function(ctx){
-                ctx.innerHTML = htmlString;
-            // })
+            const noteID = noteIds[id];
+            addUpdateEvent(noteID);
         })
+    })
+
+    deleteBtn.forEach(function(element,id){
+        element.addEventListener('click', function(){
+            const noteID = noteIds[id];
+            deleteNote(noteID);
+        })
+    })
+}
+
+function addUpdateEvent(noteID){
+    const ctx = document.querySelector('.addNote');
+    let htmlString = `
+        
+        <div class="addNote-pop-up">
+            <h3>Update Note</h3>
+            <div class="inputItem">
+                <span>Title</span>
+                <input type="text" name="inputField" class="inputField" id="title">
+            </div>
+            <div class="inputItem">
+                <span>Body</span>
+                <textarea name="inputField" class="inputField" id="body"></textarea>
+            </div>
+            <span id="more-info">// For a new line type < br ></span>
+            <div class="add-btn">
+                <input type="button" id="update-DevList-btn"  class="btn" value="update DevList Note">
+            </div>
+        </div>
+    `
+    ctx.innerHTML = htmlString;
+    readUpdateInputs(noteID);
+}
+
+function readUpdateInputs(noteID){
+    const btn = document.querySelector('#update-DevList-btn');
+    const ctx = document.querySelector('.addNote');
+    
+
+    btn.addEventListener('click', function(){
+        titleInput = document.querySelector('#title').value;
+        bodyInput = document.querySelector('#body').value;
+        date = getDate();
+
+        let htmlString  = `
+            <div class="addNote">
+                <input type="button" id="addNote-btn" class="btn" value="+">
+            </div>
+        `
+
+        ctx.innerHTML = htmlString;
+        updateNote(noteID, titleInput, bodyInput, date, author);
+    })
+}
+
+function updateNote(noteID, title, body, date, author){
+    console.log('update', noteID)
+    fetch(`https://chat-test.pockethost.io/api/collections/Notes/records/${noteID}`,{
+        method:"PATCH",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            Title: title,
+            Body: body,
+            Date: date,
+            ListOf: author
+        })
+    })
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+        getLists();
+    })    
+}
+
+function deleteNote(noteID){
+    fetch(`https://chat-test.pockethost.io/api/collections/Notes/records/${noteID}`,{
+        method:"DELETE"
+    })
+    .then(function(){
+        getLists();
     })
 }
 

@@ -74,7 +74,7 @@ section.redirect{
     background-color: rgb(42, 43, 46, .95);
 }
 
-#addNote-btn, #add-DevList-btn, #logInBtn, #signUpBtn{
+#addNote-btn, #add-DevList-btn, #logInBtn, #signUpBtn, .btn{
     margin: 20px 0 50px;
     padding: 15px 50px;
     border-radius: 15px;
@@ -83,6 +83,10 @@ section.redirect{
     
     font-size: 14pt;
     color: var(--background-color);
+}
+.btn#updateBtn, .btn#deleteBtn{
+    font-size: 10pt;
+    padding: 10px 25px;
 }
 #add-DevList-btn{
     margin-bottom: 14px;
@@ -130,6 +134,7 @@ section.redirect{
     }
 }
 .addNote-pop-up{
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -142,9 +147,6 @@ section.redirect{
     flex-direction: column;
     width: 90%;
     max-width: 500px;
-    
-
-    
     margin-bottom: 48px;
 }
 .inputItem span{

@@ -12,7 +12,8 @@ export default class Note{
                     <h2>${this._title}</h2>
                      <div class="info">
                         <span id="date">${this._date}</span>
-                        <input type="button" value=":" id="options">
+                        <input type="button" value="Update" id="updateBtn" class="btn">
+                        <input type="button" value="Delete" id="deleteBtn" class="btn">     
                     </div>
                 </div>
                 <p>${this._body}</p>
