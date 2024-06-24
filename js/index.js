@@ -204,7 +204,7 @@ function addUpdateEvent(noteID){
             </div>
             <span id="more-info">// For a new line type < br ></span>
             <div class="add-btn">
-                <input type="button" id="update-DevList-btn"  class="btn" value="update DevList Note">
+                <input type="button" id="update-DevList-btn"  class="btn" value="Update DevList Note">
             </div>
         </div>
     `

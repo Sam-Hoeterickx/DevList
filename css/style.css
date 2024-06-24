@@ -22,6 +22,9 @@ a{
     text-decoration: none;
     font-style: italic;
 }
+p{
+    line-height: 20pt;
+}
 input[type=button]{
     cursor: pointer;
 }
@@ -95,7 +98,8 @@ section.redirect{
 #add-DevList-btn:hover, 
 #logInBtn:hover,
 #signUpBtn:hover,
-#btn:hover{
+#btn:hover,
+.btn:hover{
     animation-name: btn;
     animation-duration: 5s;
     animation-timing-function: ease;
