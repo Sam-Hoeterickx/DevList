@@ -221,6 +221,12 @@ section.redirect{
 }
 
 @media(max-width: 1200px){
+    header{
+        text-align: center;
+        font-size: 22pt;
+        font-style: italic;
+        font-weight: 600;
+    }
     .title{
         flex-direction: column;
     }
